@@ -1,9 +1,19 @@
+.row{
+  margin-bottom: 12px;
+
+}
+.desc {
+  font-style: italic;
+
+}
 .number {
-  line-height: 2em;
+  display: inline-block;
+  width: 24px;
   font-size: 2em;
   color: red;
   border: solid 1px black;
   background: yellow;
+  padding-left: 4px;
 }
 .guess {
   line-height: 16px;
@@ -22,5 +32,7 @@
 .guess-button {
   font-size: 1.5em;
   border: solid 1px black;
+  border-radius: 5px;
+  background-color: lightgray;
   
 }
