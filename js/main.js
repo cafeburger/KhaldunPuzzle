@@ -59,6 +59,7 @@ var checkDupB = function (number1, number2) {
         if (i != j) {
           if (strNumber1.substring(i, i + 1) == strNumber2.substring(j, j + 1)) {
             result++;
+            break;
           }
         }
       }
