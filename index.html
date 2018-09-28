@@ -1,24 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>卡盾解謎</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
-  <script
-  src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </head>
+
 <body>
-    <div>
-      <img src="img/KhaldunPuzzle.png" alt="">
-    </div>
+  <div>
     <div class="desc">按F5鍵可以重新開始!</div>
-    <div class="container">
-     
+    <img src="img/KhaldunPuzzle.png" alt="">
+  </div>
+
+  <div class="init-cond">
+    <div class="row">
+      <span class="guess2">第1個位置,是</span>
+      <select class="guess" name="initAColor" id="initAColor">
+        <option value="0">?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select><span class="guess2">號顏色</span>
     </div>
+    <div class="row">
+        <span class="guess2">其它位置可能顏色</span>
+      <select class="guess" name="initBColor1" id="initBColor1">
+        <option value="0">?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+      <select class="guess" name="initBColor2" id="initBColor2">
+        <option value="0">?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+      <select class="guess" name="initBColor3" id="initBColor3">
+        <option value="0">?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+      <input class="guess-button" type="button" name="begin" id="begin" value="開始" onclick="begin()" >
+    </div>
+  </div>
+  <div class="container">
+
+  </div>
 </body>
+
 </html>
