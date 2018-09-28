@@ -6,23 +6,54 @@ $(function () {
   $(".container").empty();
 
 
-  initArray();
+  //initArray();
+  //guessedNumber = guessNumber();
+  //genRow(guessedNumber);
+});
+var begin = function () {
+  var a = 0;
+  var b = 0;
+  $("#begin").attr('disabled', 'disabled');
+  var initA = parseInt($("#initAColor").val());
+  var initB1 = parseInt($("#initBColor1").val());
+  var initB2 = parseInt($("#initBColor2").val());
+  var initB3 = parseInt($("#initBColor3").val());
+  if (initA != 0) {
+    a = 1;
+  }
+  if (initB1 != 0) {
+    b++;
+  }
+  if (initB2 != 0) {
+    b++;
+  }
+  if (initB3 != 0) {
+    b++;
+  }
+
+
+  initArray(initA, initB1, initB2, initB3);
+  removeNoUseNumber();
+  console.dir(numArray);
   guessedNumber = guessNumber();
   genRow(guessedNumber);
-});
 
-var initArray = function () {
+};
 
-  for (var i1 = 0; i1 <= 7; i1++) {
-    for (var i2 = 0; i2 <= 7; i2++) {
-      for (var i3 = 0; i3 <= 7; i3++) {
-        for (var i4 = 0; i4 <= 7; i4++) {
-          for (var i5 = 0; i5 <= 7; i5++) {
-            var idx = i1 * 10000 + i2 * 1000 + i3 * 100 + i4 * 10 + i5
-            //if (!isSelfDup(idx)) {
-            numArray[idx] = idx;
-            totalCombined++;
-            //}
+var initArray = function (initA, initB1, initB2, initB3) {
+
+  for (var i1 = 1; i1 <= 8; i1++) {
+    if (initA == 0 || i1 == initA) {
+      for (var i2 = 1; i2 <= 8; i2++) {
+        for (var i3 = 1; i3 <= 8; i3++) {
+          for (var i4 = 1; i4 <= 8; i4++) {
+            for (var i5 = 1; i5 <= 8; i5++) {
+              var idx = i1 * 10000 + i2 * 1000 + i3 * 100 + i4 * 10 + i5
+              //if (!isSelfDup(idx)) {
+              numArray[idx] = idx;
+              totalCombined++;
+              //}
+            }
           }
         }
       }
@@ -34,6 +65,47 @@ var initArray = function () {
 
 
 };
+
+var removeNoUseNumber = function* () {
+  for (var i = 0; i < numArray.length; i++) {
+    if (numArray[i] != null) {
+      var bCount = 0;
+      var tmpB1 = initB1;
+      var tmpB2 = initB2;
+      var tmpB3 = initB3;
+      var strNumber = numberToString(numArray[i]);
+
+      var num = [];
+      num[1] = strNumber.substring(1, 2);
+      num[2] = strNumber.substring(2, 3);
+      num[3] = strNumber.substring(3, 4);
+      num[4] = strNumber.substring(4, 5);
+    
+      for (var j = 1; j < strNumber.length; j++) {
+        if (num[j] != null && num[j] == tmpB1) {
+          bCount++;
+          delete num[j];
+          tmpB1 = 0;
+          continue;
+        }
+        if (num[j] != null && num[j] == tmpB2) {
+          bCount++;
+          delete num[j];
+          tmpB2 = 0;
+          continue;
+        }
+        if (num[j] != null && num[j] == tmpB3) {
+          bCount++;
+          tmpB3 = 0;
+          delete num[j];
+        }
+      }
+      if (bCount < b) {
+        delete numArray[i];
+      }
+    }
+  }
+}
 var isSelfDup = function (number) {
   return checkDupB(number, number) > 0;
 };
