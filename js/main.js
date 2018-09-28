@@ -33,7 +33,7 @@ var begin = function () {
 
 
   initArray(initA, initB1, initB2, initB3);
-  removeNoUseNumber();
+  removeNoUseNumber(b, initB1, initB2, initB3);
   console.dir(numArray);
   guessedNumber = guessNumber();
   genRow(guessedNumber);
@@ -66,7 +66,7 @@ var initArray = function (initA, initB1, initB2, initB3) {
 
 };
 
-var removeNoUseNumber = function* () {
+var removeNoUseNumber = function (b, initB1, initB2, initB3) {
   for (var i = 0; i < numArray.length; i++) {
     if (numArray[i] != null) {
       var bCount = 0;
@@ -80,7 +80,7 @@ var removeNoUseNumber = function* () {
       num[2] = strNumber.substring(2, 3);
       num[3] = strNumber.substring(3, 4);
       num[4] = strNumber.substring(4, 5);
-    
+
       for (var j = 1; j < strNumber.length; j++) {
         if (num[j] != null && num[j] == tmpB1) {
           bCount++;
