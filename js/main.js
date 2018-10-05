@@ -241,6 +241,7 @@ var genRow = function (number) {
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
+        <option value="5">5</option>
       </select>
       <span class="guess2">個正確,但位置不對</span>
 
