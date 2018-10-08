@@ -16,6 +16,29 @@
   <div>
     <div class="desc">按F5鍵可以重新開始!</div>
     <img src="img/KhaldunPuzzle.png" alt="">
+    <textarea rows="19" cols="30" id="button-code" >
+usetype 0xe40 'any' 'ground' 2
+pause 100
+replygump 0x12a 6255 91
+waitforgump 0x12a 15000
+pause 100
+replygump 0x12a 6255 92
+waitforgump 0x12a 15000
+pause 100
+replygump 0x12a 6255 93
+waitforgump 0x12a 15000
+pause 100
+replygump 0x12a 6255 94
+waitforgump 0x12a 15000
+pause 100
+replygump 0x12a 6255 95
+waitforgump 0x12a 15000
+pause 100
+replygump 0x12a 89 95
+waitforgump 0x12c 15000
+
+    </textarea>
+    <button id="copy-to-clipboard" onclick="copyToClipboard()">複製</button>
   </div>
 
   <div class="init-cond">

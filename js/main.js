@@ -2,6 +2,19 @@ var numArray = [];
 var totalCombined = 0;
 var currentRow = 1;
 var guessedNumber = 0;
+var colorCode = {
+  '1': 6255,
+  '2': 6250,
+  '3': 6251,
+  '4': 6252,
+  '5': 6253,
+  '6': 6254,
+  '7': 6249,
+  '8': 6256
+};
+  
+  
+  
 $(function () {
   $(".container").empty();
 
@@ -208,6 +221,7 @@ var guessNext = function (row) {
   filterAB(guessedNumber, "" + valueA + valueB);
   guessedNumber = guessNumber();
   genRow(guessedNumber);
+  genButtonCode(guessedNumber);
 };
 
 
@@ -250,3 +264,70 @@ var genRow = function (number) {
   $('.container').append(row);
   currentRow++;
 };
+
+var genButtonCode = function (number) {
+  var buttonCode = `usetype 0xe40 'any' 'ground' 2
+  pause 100
+  `;
+  var numStr = numberToString(number);
+  var s1 = numStr.substring(0, 1);
+  var s2 = numStr.substring(1, 2);
+  var s3 = numStr.substring(2, 3);
+  var s4 = numStr.substring(3, 4);
+  var s5 = numStr.substring(4, 5);
+  var colorIndex = 0;
+// slot 1
+colorIndex = colorCode[s1];
+  buttonCode += `replygump 0x12a ${colorIndex} 91
+  waitforgump 0x12a 15000
+  pause 100
+  `
+
+  // slot 2
+  colorIndex = colorCode[s2];
+  buttonCode += `replygump 0x12a ${colorIndex} 92
+  waitforgump 0x12a 15000
+  pause 100
+  `
+
+  // slot 3
+  colorIndex = colorCode[s3];
+  buttonCode += `replygump 0x12a ${colorIndex} 93
+  waitforgump 0x12a 15000
+  pause 100
+  `
+  // slot 4
+  colorIndex = colorCode[s4];
+  buttonCode += `replygump 0x12a ${colorIndex} 94
+  waitforgump 0x12a 15000
+  pause 100
+  `
+  // slot 5
+  colorIndex = colorCode[s5];
+  buttonCode += `replygump 0x12a ${colorIndex} 95
+  waitforgump 0x12a 15000
+  pause 100
+  `
+  buttonCode+=`replygump 0x12a 89 95
+  waitforgump 0x12c 15000
+  
+  `
+
+  var copyText = document.getElementById("button-code");
+    $("#button-code").text(buttonCode);
+
+}
+
+var copyToClipboard = function () {
+   /* Get the text field */
+   var copyText = document.getElementById("button-code");
+
+   /* Select the text field */
+   copyText.select();
+ 
+   /* Copy the text inside the text field */
+   document.execCommand("copy");
+ 
+   /* Alert the copied text */
+   alert("Copied the text: " + copyText.value);
+}
